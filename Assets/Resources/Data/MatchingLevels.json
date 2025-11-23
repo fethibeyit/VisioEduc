@@ -1,0 +1,27 @@
+{ "levels" : 
+  [
+    {
+      "title" : "1er niveau",
+      "difficulty": 1,
+      "scene" : "MatchingScene",
+      "pairs": [
+        ["one_ball", "one_hand"],
+        ["two_ball", "two_hand"],
+        ["three_ball", "three_hand"],
+        ["four_ball", "four_hand"]
+      ]
+    },
+    {
+      "title" : "2eme niveau",
+      "difficulty": 2,
+      "scene" : "MatchingScene",
+      "pairs": [
+        ["one_ball", "one_hand"],
+        ["two_ball", "two_hand"],
+        ["three_ball", "three_hand"],
+        ["four_ball", "four_hand"],
+        ["five_ball", "five_hand"]
+      ]
+    }
+  ]
+}

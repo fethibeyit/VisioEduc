@@ -1,0 +1,24 @@
+{ "levels" : 
+  [
+    {
+      "title" : "Tri vetements vs aliments",
+      "difficulty": 1,
+      "scene" : "SortingScene",
+      "categories": 
+      {
+        "vetements" : ["pantalons", "t-shirt"],
+        "aliments" : ["orange", "banane"]
+      }
+    },
+    {
+      "title" : "Tri vetements vs aliments",
+      "difficulty": 2,
+      "scene" : "SortingScene",
+      "categories": 
+      {
+        "vetements" : ["pantalons", "t-shirt", "chaussures", "bonnet"],
+        "aliments" : ["orange", "banane", "poisson", "soupe"]
+      }
+    }
+  ]
+}

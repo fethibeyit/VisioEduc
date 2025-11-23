@@ -1,0 +1,121 @@
+# =============== #
+#   UNITY / C#    #
+# =============== #
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# Visual Studio / JetBrains
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity Cache
+[Ss]treamingAssets/aa/
+Assets/AssetStoreTools*
+
+# Crash Reports
+sysinfo.txt
+
+# Generated files
+*.apk
+*.aab
+*.unitypackage
+
+# Auto-generated meta backups
+*.meta.tmp
+
+# Gradle (Android)
+.gradle/
+*.gradle
+*.keystore
+*.jks
+*.dex
+*.apk
+*.obb
+local.properties
+
+# iOS
+*.xcworkspace/
+*.xcuserstate
+*.xcodeproj/project.xcworkspace/
+*.xcuserdatad/
+Pods/
+DerivedData/
+
+# Build Cache
+[Bb]ee/
+*.bc
+
+# TextMesh Pro
+Assets/TextMesh Pro/**/*.asset.meta
+
+# Addressables
+Library/com.unity.addressables/
+
+# Collaborate
+.collab/
+
+# Plastic SCM
+PlasticSCM/
+
+# Unity Cloud Build
+UnityCloudBuild/
+
+# Crashlytics / Firebase
+crashlytics-build.properties
+
+# Misc
+*.DS_Store
+*.swp
+*.tmp
+*.temp
+
+# VS config files
+.vs/
+.vscode/
+.vsconfig
+
+# Temporary Unity files
+*.tmp
+*.bak
+*.pidb
+*.suo
+*.user
+*.userprefs
+
+# Unity cache
+Library/
+Temp/
+Obj/
+Logs/
+MemoryCaptures/
+Build/
+Builds/
+
+# Rider & VS
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.sln.DotSettings
+
+# Ignore utmp (temp files)
+.utmp/

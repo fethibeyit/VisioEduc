@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class LevelData
 {
@@ -25,15 +24,8 @@ public static class MatchingLevelLoader
 {
     public static MatchingLevelsRoot LoadLevels()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Data/MatchingLevels");
-
-        if (jsonFile == null)
-        {
-            Debug.LogError("DATA JSON introuvable !");
-            return null;
-        }
-
-        return JsonConvert.DeserializeObject<MatchingLevelsRoot>(jsonFile.text);
+        var jsonText = JsonHelper.LoadJson("MatchingLevels.json");
+        return JsonConvert.DeserializeObject<MatchingLevelsRoot>(jsonText);
     }
 }
 
@@ -53,14 +45,7 @@ public static class SortingLevelLoader
 {
     public static SortingLevelsRoot LoadLevels()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Data/SortingLevels");
-
-        if (jsonFile == null)
-        {
-            Debug.LogError("DATA JSON introuvable !");
-            return null;
-        }
-
-        return JsonConvert.DeserializeObject<SortingLevelsRoot>(jsonFile.text);
+        var jsonText = JsonHelper.LoadJson("SortingLevels.json");
+        return JsonConvert.DeserializeObject<SortingLevelsRoot>(jsonText);
     }
 }

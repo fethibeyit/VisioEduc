@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        DataInitializer.CopyDataFilesToPersistent();
+
         // read levels from Json Data
         currentLevels.AddRange(MatchingLevelLoader.LoadLevels().levels.Where(x=>x.difficulty == currentDifficulty));
         currentLevels.AddRange(SortingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == currentDifficulty));

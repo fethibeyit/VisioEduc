@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
 
     public int currentLevelIndex = 0;
 
-    public int currentDifficulty = 1;
-
     void Awake()
     {
         if (Instance != null)
@@ -32,17 +30,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DataInitializer.CopyDataFilesToPersistent();
-
-        // read levels from Json Data
-        currentLevels.AddRange(MatchingLevelLoader.LoadLevels().levels.Where(x=>x.difficulty == currentDifficulty));
-        currentLevels.AddRange(SortingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == currentDifficulty));
- 
-        currentLevels.Shuffle();
-
-        LoadLevel();
     }
 
-    public void LoadLevel()
+    public void LoadLevels(int difficulty = 1)
+    {
+        currentLevels.AddRange(MatchingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == difficulty));
+        currentLevels.AddRange(SortingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == difficulty));
+
+        currentLevels.Shuffle();
+
+        LaunchCurrentLevel();
+    }
+
+    public void LoadEditLevel()
+    {
+        SceneManager.LoadScene("LevelSelectorScene");
+    }
+
+    public void LaunchCurrentLevel()
     {
         if (currentLevelIndex >= currentLevels.Count)
         {
@@ -59,27 +64,20 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene chargée : " + scene.name + scene.buildIndex);
-
-        if (scene.name == "BootScene" || scene.name == "PlayVideo") return;
+        Debug.Log("Scene chargée : " + scene.name);
 
         var builder = FindFirstObjectByType<LevelBuilder>();
 
-        if (builder == null)
+        if (builder != null)
         {
-            Debug.LogError("LevelBuilder introuvable dans la scène!");
-            return;
+            builder.BuildLevel(currentLevelData);
         }
-
-        builder.BuildLevel(currentLevelData);
-
-        Debug.Log($"Niveau {currentLevelData.title} de difficulté {currentLevelData.difficulty} instancié!");
     }
 
     public void CompleteLevel()
     {
         Debug.Log($"Niveau {currentLevelData.title} complété !");
         currentLevelIndex++;
-        LoadLevel();
+        LaunchCurrentLevel();
     }
 }

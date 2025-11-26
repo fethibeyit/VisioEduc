@@ -14,6 +14,7 @@ public class PairRow : MonoBehaviour
 
     public void SetLeft(Sprite sprite)
     {
+        if(sprite == null) return;
         leftImage = sprite.texture.name;
         leftLabel.text = sprite.texture.name;
         leftButton.GetComponent<Image>().sprite = sprite;
@@ -21,6 +22,7 @@ public class PairRow : MonoBehaviour
 
     public void SetRight(Sprite sprite)
     {
+        if (sprite == null) return;
         rightImage = sprite.texture.name;
         rightLabel.text = sprite.texture.name;
         rightButton.GetComponent<Image>().sprite = sprite;

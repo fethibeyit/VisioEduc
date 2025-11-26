@@ -1,64 +1,73 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelEditorManager : MonoBehaviour
+public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
 {
-    public InputField inputTitle;
-    public Dropdown difficultyDropdown;
 
     public Transform pairsContainer;
     public GameObject pairRowPrefab;
 
-    public ImageSelector imageSelector;
-
-    private PairRow selectedPairRow;
-    private bool selectingLeft;
-
     public Button addPairButton;
-    public Button saveButton;
 
-    private void Start()
+    private List<PairRow> pairRows = new List<PairRow>();
+
+    protected new void Start()
     {
+        base.Start();
         addPairButton.onClick.AddListener(AddPairRow);
-        saveButton.onClick.AddListener(SaveLevel);
+
+        inputTitle.text = levelData?.title ?? "";
+        difficultyDropdown.value = (levelData != null) ? levelData.difficulty - 1 : 0;
+        foreach (string[] pair in levelData.pairs)
+        {
+            PairRow row = InstantiateNewPairRow();
+            row.SetLeft(GetSpriteByName(pair[0]));
+            row.SetRight(GetSpriteByName(pair[1]));
+            pairRows.Add(row);
+        }
+    }
+
+    Sprite GetSpriteByName(string name)
+    {
+        var sprites = SpriteLoader.LoadAllSprites();
+
+        return sprites.FirstOrDefault(s => s.texture.name == name);
     }
 
     void AddPairRow()
     {
+        pairRows.Add(InstantiateNewPairRow());
+    }
+
+    PairRow InstantiateNewPairRow() {
         GameObject rowObj = Instantiate(pairRowPrefab, pairsContainer);
         PairRow row = rowObj.GetComponent<PairRow>();
 
         row.leftButton.onClick.AddListener(() => SelectImageFor(row, true));
         row.rightButton.onClick.AddListener(() => SelectImageFor(row, false));
+        return row;
     }
 
-    void SelectImageFor(PairRow row, bool isLeft)
+    public void SelectImageFor(PairRow row, bool isLeft)
     {
-        selectedPairRow = row;
-        selectingLeft = isLeft;
-
-        imageSelector.onSelectImage = (Sprite sprite) =>
+        SelectImage((Sprite sprite) =>
         {
-            if (selectingLeft)
+            if (isLeft)
                 row.SetLeft(sprite);
             else
                 row.SetRight(sprite);
-        };
-
-        imageSelector.gameObject.SetActive(true);
+        });
     }
 
-    void SaveLevel()
+    protected override void PersistLevel()
     {
         List<string[]> pairs = new List<string[]>();
 
-        foreach (Transform t in pairsContainer)
+        foreach (PairRow row in pairRows)
         {
-            PairRow row = t.GetComponent<PairRow>();
             if (string.IsNullOrEmpty(row.leftImage) || string.IsNullOrEmpty(row.rightImage))
                 continue;
 
@@ -71,7 +80,7 @@ public class LevelEditorManager : MonoBehaviour
         MatchingLevelData level = new MatchingLevelData
         {
             title = inputTitle.text,
-            difficulty = difficultyDropdown.value,
+            difficulty = difficultyDropdown.value + 1,
             scene = "MatchingScene",
             pairs = pairs.ToArray()
         };

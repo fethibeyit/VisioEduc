@@ -12,6 +12,8 @@ public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
 
     public Button addPairButton;
 
+    public int MAX_PAIRS = 6;
+
     private List<PairRow> pairRows = new List<PairRow>();
 
     protected new void Start()
@@ -28,6 +30,11 @@ public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
             row.SetRight(GetSpriteByName(pair[1]));
             pairRows.Add(row);
         }
+
+        if(pairRows.Count >= MAX_PAIRS)
+        {
+            addPairButton.interactable = false;
+        }
     }
 
     Sprite GetSpriteByName(string name)
@@ -39,7 +46,15 @@ public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
 
     void AddPairRow()
     {
-        pairRows.Add(InstantiateNewPairRow());
+        if(pairRows.Count < MAX_PAIRS)
+        {
+            pairRows.Add(InstantiateNewPairRow());
+
+            if(pairRows.Count >= MAX_PAIRS)
+            {
+                addPairButton.interactable = false;
+            }
+        }
     }
 
     PairRow InstantiateNewPairRow() {

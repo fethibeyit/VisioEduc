@@ -1322,7 +1322,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.58963823, g: 0.59119487, b: 0.5558719, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2508,6 +2508,7 @@ MonoBehaviour:
   pairsContainer: {fileID: 1592206921}
   pairRowPrefab: {fileID: 6983910301122331529, guid: 628863b214f221d45b92ed06f8c34908, type: 3}
   addPairButton: {fileID: 627327928}
+  MAX_PAIRS: 6
 --- !u!1 &1539761959
 GameObject:
   m_ObjectHideFlags: 0

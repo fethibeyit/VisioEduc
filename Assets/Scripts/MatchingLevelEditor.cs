@@ -74,21 +74,15 @@ public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
             pairs.Add(new string[] { row.leftImage, row.rightImage });
         }
 
-        var matchingLevelsRoot = MatchingLevelLoader.LoadLevels();
-
-
         MatchingLevelData level = new MatchingLevelData
         {
+            id = LevelLoader.CurrentLevel.id,
             title = inputTitle.text,
             difficulty = difficultyDropdown.value + 1,
             scene = "MatchingScene",
             pairs = pairs.ToArray()
         };
 
-        matchingLevelsRoot.levels = matchingLevelsRoot.levels.Append(level).ToArray();
-
-        string jsonText = JsonConvert.SerializeObject(matchingLevelsRoot, Formatting.Indented);
-
-        JsonHelper.SaveJson("MatchingLevels.json", jsonText);
+        LevelLoader.SaveLevel(level);
     }
 }

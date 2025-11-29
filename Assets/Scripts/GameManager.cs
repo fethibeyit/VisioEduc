@@ -30,13 +30,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DataInitializer.CopyDataFilesToPersistent();
+        LevelLoader.LoadAllLevels();
     }
 
     public void LoadLevels(int difficulty = 1)
     {
-        currentLevels.AddRange(MatchingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == difficulty));
-        currentLevels.AddRange(SortingLevelLoader.LoadLevels().levels.Where(x => x.difficulty == difficulty));
-
+        currentLevels = LevelLoader.AllLevels.Where(x => x.difficulty == difficulty).ToList();
         currentLevels.Shuffle();
 
         LaunchCurrentLevel();

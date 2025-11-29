@@ -21,7 +21,7 @@ public abstract class LevelEditor<T> : MonoBehaviour
 
     protected void Start()
     {
-        levelData = StaticLevelEdit.CurrentLevel as T;
+        levelData = LevelLoader.CurrentLevel as T;
         saveButton.onClick.AddListener(Save);
         cancelButton.onClick.AddListener(Cancel);
     }

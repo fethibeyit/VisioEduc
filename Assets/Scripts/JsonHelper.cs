@@ -15,14 +15,14 @@ public static class JsonHelper{
         return File.ReadAllText(path);
     }
 
-    public static void SaveJson(string fileName, string json)
+    public static void SaveJson(string json, string fileName)
     {
         string folder = Path.Combine(Application.persistentDataPath, "Data");
 
         if (!Directory.Exists(folder))
             Directory.CreateDirectory(folder);
 
-        string path = Path.Combine(folder, fileName);
+        string path = Path.Combine(Application.persistentDataPath, "Data", fileName);
 
         File.WriteAllText(path, json);
 

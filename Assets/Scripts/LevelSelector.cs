@@ -9,33 +9,27 @@ public class LevelSelector : MonoBehaviour
     public Transform contentPanel;
     public GameObject levelButtonPrefab;
 
-    private List<LevelData> levelList = new();
+    public Button addButton;
+
 
     void Start()
     {
-        LoadLevels();
+        addButton.onClick.AddListener(() =>
+        {
+            OpenLevelEditor(new LevelData { scene = "MatchingScene"});
+        });
+
         PopulateUI();
-    }
-
-    void LoadLevels()
-    {
-
-        levelList.AddRange(MatchingLevelLoader.LoadLevels().levels);
-        levelList.AddRange(SortingLevelLoader.LoadLevels().levels);
-
-
-        if (levelList.Count == 0)
-            Debug.LogWarning("Empty Level List");
     }
 
     void PopulateUI()
     {
-        foreach (LevelData lvl in levelList)
+        foreach (LevelData lvl in LevelLoader.AllLevels)
         {
             GameObject button = Instantiate(levelButtonPrefab, contentPanel);
 
             button.GetComponentInChildren<TMP_Text>().text =
-                $"{lvl.title}  (Difficulté: {lvl.difficulty})";
+                $"{lvl.title}  (Difficulté: {lvl.difficulty}) [{lvl.id}]";
 
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
@@ -48,13 +42,10 @@ public class LevelSelector : MonoBehaviour
     {
         Debug.Log("Ouverture du niveau : " + lvl.title);
 
-        StaticLevelEdit.CurrentLevel = lvl;
+        LevelLoader.CurrentLevel = lvl;
 
         SceneManager.LoadScene($"Edit{lvl.scene}");
-
-        // On peut transférer le niveau choisi vers l’éditeur
-        //LevelEditor.LoadedLevel = lvl;
-
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(lvl.scene);
     }
+
+
 }

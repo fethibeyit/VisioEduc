@@ -1,9 +1,10 @@
-{ "levels" : 
-  [
+{
+  "levels": [
     {
-      "title" : "1er niveau",
+      "id": "4d4e6c67-8e0e-4213-bc09-18f58e323b57",
+      "title": "1er niveau",
       "difficulty": 1,
-      "scene" : "MatchingScene",
+      "scene": "MatchingScene",
       "pairs": [
         ["one_ball", "one_hand"],
         ["two_ball", "two_hand"],
@@ -12,9 +13,10 @@
       ]
     },
     {
-      "title" : "2eme niveau",
+      "id": "bd0a338c-54fb-4872-bec9-8e1f9c8df03a",
+      "title": "2eme niveau",
       "difficulty": 2,
-      "scene" : "MatchingScene",
+      "scene": "MatchingScene",
       "pairs": [
         ["one_ball", "one_hand"],
         ["two_ball", "two_hand"],

@@ -158,6 +158,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2739504778114118068, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5635380524881738643, guid: e35bd00f020a1894d928c2b35e6da548, type: 3}
+    - target: {fileID: 2739504778114118068, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4176968832933478375, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_Name
       value: RightZone
@@ -168,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_LocalPosition.z
@@ -205,29 +213,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4176968832933478375, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 848858198}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
---- !u!1 &848858197 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4176968832933478375, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+--- !u!114 &848858198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4732653321529501891, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
   m_PrefabInstance: {fileID: 704837568}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &848858198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848858197}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b193406359ad6c74dbbb9329b1708ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedCategory: food
 --- !u!1 &936263822
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +259,7 @@ MonoBehaviour:
   spritePrefab: {fileID: 833815786481719525, guid: 435a7acf0c7b4834c84ed2e1ade4f333, type: 3}
   leftGrid: {fileID: 1524824461}
   rightGrid: {fileID: 1734585944}
-  leftZone: {fileID: 1998020793}
+  leftZone: {fileID: 1169536250}
   rightZone: {fileID: 848858198}
 --- !u!4 &936263824
 Transform:
@@ -289,6 +287,7 @@ GameObject:
   - component: {fileID: 1030891093}
   - component: {fileID: 1030891092}
   - component: {fileID: 1030891091}
+  - component: {fileID: 1030891094}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -370,6 +369,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030891094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030891090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1001 &1169536249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,13 +429,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftZone
       objectReference: {fileID: 0}
+    - target: {fileID: 4732653321529501891, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+      propertyPath: acceptedCategory
+      value: clothes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 7592815738930228695, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
       propertyPath: m_LocalPosition.z
@@ -429,11 +484,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4176968832933478375, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1998020793}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+--- !u!114 &1169536250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4732653321529501891, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
+  m_PrefabInstance: {fileID: 1169536249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b193406359ad6c74dbbb9329b1708ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524824460
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,24 +591,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1998020792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4176968832933478375, guid: e69dd86a0024a6b44ba97db5ad56f883, type: 3}
-  m_PrefabInstance: {fileID: 1169536249}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1998020793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998020792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b193406359ad6c74dbbb9329b1708ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedCategory: clothes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

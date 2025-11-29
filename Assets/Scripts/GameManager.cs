@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Tous les niveaux sont terminés !");
 
-            SceneManager.LoadScene("PlayVideo");
+            currentLevelIndex = 0;
+            SceneManager.LoadScene("BootScene");
             return;
         }
 

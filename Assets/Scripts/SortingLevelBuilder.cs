@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class SortingLevelBuilder : LevelBuilder
 {
@@ -85,23 +86,80 @@ public class SortingLevelBuilder : LevelBuilder
                 break;
         }
 
-        if (zone != null && zone.acceptedCategory == item.category)
+        Debug.Log(zone);
+
+        if (zone != null)
         {
-            item.transform.localScale *= 0.5f;
+            if (zone.acceptedCategory == item.category) 
+            {
+                SoundManager.Instance.PlayCorrect();
 
-            GridPlacer grid = (item.category == leftGrid.category) ? leftGrid : rightGrid;
+                GridPlacer grid = (item.category == leftGrid.category) ? leftGrid : rightGrid;
+                Vector3 targetPos = grid.GetNextPosition();
 
-            item.transform.position = grid.GetNextPosition();
-            
-            RegisterPlacement();
+                item.GetComponent<Collider2D>().enabled = false; // pour éviter reclick
 
-            SpawnNext();
+                item.transform
+                    .DOMove(targetPos, 0.4f)
+                    .SetEase(Ease.OutBack);
+
+                item.transform
+                    .DOScale(0.5f, 0.4f)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() =>
+                    {
+                        RegisterPlacement();
+                        SpawnNext();
+                    });
+            }
+            else
+            {
+                SoundManager.Instance.PlayWrong();
+
+                item.transform
+                    .DOShakePosition(0.3f, 0.5f, 8, 90f, false)
+                    .OnComplete(() =>
+                    {
+                        item.transform.DOMove(spawnPoint.position, 0.4f).SetEase(Ease.InOutQuad);
+                    });
+            }
+
         }
         else
         {
-            item.transform.position = spawnPoint.position;
+            item.transform.DOMove(spawnPoint.position, 0.4f).SetEase(Ease.InOutQuad);  
         }
     }
+
+    //public void OnItemReleased(DraggableSprite item)
+    //{
+    //    Vector2 p = cam.ScreenToWorldPoint(Input.mousePosition);
+    //    RaycastHit2D[] hits = Physics2D.RaycastAll(p, Vector2.zero);
+
+    //    DropZone2D zone = null;
+    //    foreach (var hit in hits)
+    //    {
+    //        if (hit.collider.TryGetComponent<DropZone2D>(out zone))
+    //            break;
+    //    }
+
+    //    if (zone != null && zone.acceptedCategory == item.category)
+    //    {
+    //        item.transform.localScale *= 0.5f;
+
+    //        GridPlacer grid = (item.category == leftGrid.category) ? leftGrid : rightGrid;
+
+    //        item.transform.position = grid.GetNextPosition();
+
+    //        RegisterPlacement();
+
+    //        SpawnNext();
+    //    }
+    //    else
+    //    {
+    //        item.transform.position = spawnPoint.position;
+    //    }
+    //}
 
     void SpawnNext()
     {

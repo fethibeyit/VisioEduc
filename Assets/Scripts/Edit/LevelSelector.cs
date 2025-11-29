@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +9,7 @@ public class LevelSelector : MonoBehaviour
     public GameObject levelButtonPrefab;
 
     public Button addButton;
+    public Button returnButton;
 
 
     void Start()
@@ -17,6 +17,11 @@ public class LevelSelector : MonoBehaviour
         addButton.onClick.AddListener(() =>
         {
             OpenLevelEditor(new LevelData { scene = "MatchingScene"});
+        });
+
+        returnButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("BootScene");
         });
 
         PopulateUI();

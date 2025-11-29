@@ -43,8 +43,6 @@ public class SortingLevelBuilder : LevelBuilder
 
         items = new List<(Sprite, string)>();
 
-        //var levels = SortingLevelLoader.LoadLevels();
-
         Debug.Log("Loaded level: " + data.title);
 
         foreach (string category in data.categories.Keys)
@@ -130,36 +128,6 @@ public class SortingLevelBuilder : LevelBuilder
             item.transform.DOMove(spawnPoint.position, 0.4f).SetEase(Ease.InOutQuad);  
         }
     }
-
-    //public void OnItemReleased(DraggableSprite item)
-    //{
-    //    Vector2 p = cam.ScreenToWorldPoint(Input.mousePosition);
-    //    RaycastHit2D[] hits = Physics2D.RaycastAll(p, Vector2.zero);
-
-    //    DropZone2D zone = null;
-    //    foreach (var hit in hits)
-    //    {
-    //        if (hit.collider.TryGetComponent<DropZone2D>(out zone))
-    //            break;
-    //    }
-
-    //    if (zone != null && zone.acceptedCategory == item.category)
-    //    {
-    //        item.transform.localScale *= 0.5f;
-
-    //        GridPlacer grid = (item.category == leftGrid.category) ? leftGrid : rightGrid;
-
-    //        item.transform.position = grid.GetNextPosition();
-
-    //        RegisterPlacement();
-
-    //        SpawnNext();
-    //    }
-    //    else
-    //    {
-    //        item.transform.position = spawnPoint.position;
-    //    }
-    //}
 
     void SpawnNext()
     {

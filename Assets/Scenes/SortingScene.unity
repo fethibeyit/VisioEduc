@@ -528,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 
   columns: 3
-  cellSize: 1.2
+  cellSize: 2
 --- !u!4 &1524824462
 Transform:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ Transform:
   m_GameObject: {fileID: 1524824460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 2, z: 0}
+  m_LocalPosition: {x: -7, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 
   columns: 3
-  cellSize: 1.2
+  cellSize: 2
 --- !u!4 &1734585945
 Transform:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ Transform:
   m_GameObject: {fileID: 1734585943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 2, z: 0}
+  m_LocalPosition: {x: 3, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -17,7 +17,7 @@ public class ConnectableItem : MonoBehaviour
             Debug.Log($"{gameObject.name} est déjà connecté !");
             return;
         }
-
+        SoundManager.Instance.PlayClick();
         LineConnector.Instance?.StartLine(this);
     }
 }

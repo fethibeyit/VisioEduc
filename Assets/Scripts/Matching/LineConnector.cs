@@ -62,31 +62,36 @@ public class LineConnector : MonoBehaviour
         if (hit.collider != null)
             endItem = hit.collider.GetComponent<ConnectableItem>();
 
-        if (startItem != null && endItem != null && startItem != endItem && endItem.id == startItem.id)
+        if (startItem != null && endItem != null && startItem != endItem )
         {
-            // Vérifie que les deux images ne sont pas déjà connectées
-            if (!startItem.isConnected && !endItem.isConnected)
+            if (endItem.id == startItem.id)
             {
-                currentLine.SetPosition(1, endItem.transform.position);
+                if (!startItem.isConnected && !endItem.isConnected)
+                {
+                    SoundManager.Instance.PlayCorrect();
+                    currentLine.SetPosition(1, endItem.transform.position);
 
-                // Marque les deux images comme connectées
-                startItem.isConnected = true;
-                endItem.isConnected = true;
-                builder.RegisterPlacement();
+                    startItem.isConnected = true;
+                    endItem.isConnected = true;
+                    builder.RegisterPlacement();
+                }
+                else
+                {
+                    Debug.Log("Cette paire est déjà connectée !");
+                    Destroy(currentLine.gameObject);
+                }
+
             }
-            else
+            else 
             {
-                Debug.Log("Cette paire est déjà connectée !");
-                Destroy(currentLine.gameObject);
+                SoundManager.Instance.PlayWrong();
+                currentLine.GetComponent<ErrorLineAnimation>().PlayError();
             }
-
-            currentLine = null;
-            startItem = null;
-            return;
+        } else
+        {
+            currentLine.GetComponent<ErrorLineAnimation>().Destroy();
         }
 
-        // Ligne invalide
-        Destroy(currentLine.gameObject);
         currentLine = null;
         startItem = null;
     }

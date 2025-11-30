@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public abstract class LevelEditor<T> : MonoBehaviour
+public abstract class LevelEditor<T> : SelectSprite
     where T : LevelData
 {
     protected T levelData;
@@ -11,8 +11,6 @@ public abstract class LevelEditor<T> : MonoBehaviour
     public InputField inputTitle;
     public Dropdown difficultyDropdown;
 
-    public ImageSelector imageSelector;
-    private Action<Sprite> onSelected;
 
     public Button saveButton;
     public Button cancelButton;
@@ -23,6 +21,8 @@ public abstract class LevelEditor<T> : MonoBehaviour
         levelData = LevelLoader.CurrentLevel as T;
         saveButton.onClick.AddListener(Save);
         cancelButton.onClick.AddListener(Cancel);
+        inputTitle.text = levelData?.title ?? "";
+        difficultyDropdown.value = (levelData != null) ? levelData.difficulty - 1 : 0;
     }
 
     protected abstract void PersistLevel();
@@ -37,16 +37,5 @@ public abstract class LevelEditor<T> : MonoBehaviour
         SceneManager.LoadScene("LevelSelectorScene");
     }
 
-    protected void SelectImage(Action<Sprite> callback)
-    {
-        onSelected = callback;
-
-        imageSelector.onSelectImage = (Sprite sprite) =>
-        {
-            onSelected?.Invoke(sprite);
-        };
-
-        imageSelector.gameObject.SetActive(true);
-    }
 }
 

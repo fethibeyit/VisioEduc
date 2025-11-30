@@ -8,15 +8,22 @@ public class LevelSelector : MonoBehaviour
     public Transform contentPanel;
     public GameObject levelButtonPrefab;
 
-    public Button addButton;
+    public Button addMatchingButton;
+    public Button addSortingButton;
+
     public Button returnButton;
 
 
     void Start()
     {
-        addButton.onClick.AddListener(() =>
+        addMatchingButton.onClick.AddListener(() =>
         {
             OpenLevelEditor(new LevelData { scene = "MatchingScene"});
+        });
+
+        addSortingButton.onClick.AddListener(() =>
+        {
+            OpenLevelEditor(new LevelData { scene = "SortingScene" });
         });
 
         returnButton.onClick.AddListener(() =>

@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,8 +20,6 @@ public class MatchingLevelEditor : LevelEditor<MatchingLevelData>
         base.Start();
         addPairButton.onClick.AddListener(AddPairRow);
 
-        inputTitle.text = levelData?.title ?? "";
-        difficultyDropdown.value = (levelData != null) ? levelData.difficulty - 1 : 0;
         foreach (string[] pair in levelData.pairs)
         {
             PairRow row = InstantiateNewPairRow();
